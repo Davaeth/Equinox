@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/showAll.css')) }}">
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/sidebar.css')) }}">
+        {% endblock %}
+        {% block title %}Member creatings{% endblock %}
+        {% block body %}
+            {% if app.session.get('user') %}
+                {% if elementsCount != 0 %}
+                    <h1 style="transform: translateY(-140%) translateX(-15%);">Your elements:
+                    </h1>
+                    {% for element in elements %}
+                        <div>
+                            <table style="width:100%">
+                                <tr>
+                                    <th>
+                                        {{element.name}}</th>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <a href="{{ path('show_element', { 'id': element.id }) }}" class="btn btn-info">Show</a>
+                                        <a href="{{ path('edit_element', { 'id': element.id }) }}" class="btn btn-dark">Edit</a>
+                                        <a href="{{ path('delete_element', { 'id': element.id }) }}" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </table>
+                            </div>
+                        {% endfor %}
+                        {% else %}
+                        {% if user.gender == 'male' %}
+                            <p>
+                                You haven't created any element right now, sir!</p>
+                            <p>Try to do it!
+                            </p>
+                            {% else %}
+                            You haven't created any element right now, ma'am!
+                            <br/>
+                            Try to do it!
+                        {% endif %}
+                        <a href="{{path('element_creator')}}" class="btn btn-dark">Create Element</a>
+                    {% endif %}
+                    {% else %}
+                    {{ render("/login") }}
+                {% endif %}
+            {% endblock %}
+        

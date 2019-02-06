@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    {{ hero.name }}
+    the
+    {{ hero.title }}
+{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/showAll.css')) }}">
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/sidebar.css')) }}">
+            <link rel="stylesheet" href="{{ absolute_url(asset('css/showDetailed.css')) }}">
+            {% endblock %}
+            {% block body %}
+                {% if app.session.get('user') %}
+                    <h1>
+                        {{ hero.name }}
+                    </h1>
+                    <span class="basicDecription">
+                        The
+                        {{ hero.title }}</span>
+                    <span class="basicDecription">
+                        {{ hero.firstElement }}</span>
+                    <span class="basicDecription">
+                        {{ hero.secondElement }}</span>
+                    <hr>
+                        <table>
+                            <tr>
+                                <th>Appearance:</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{ hero.appearance }}
+                                </td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <th>Personality:</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{ hero.personality }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button onclick="heroes()" class="btn btn-primary mt-3">Return
+                                    </td>
+                                </tr>
+                            </table>
+                            {% else %}
+                            {{ render("/login") }}
+                        {% endif %}
+                    {% endblock %}
+                

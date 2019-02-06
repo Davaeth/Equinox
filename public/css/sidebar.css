@@ -1,0 +1,70 @@
+html,
+body {
+  margin: 0;
+}
+
+.hamburger {
+  float: right;
+  padding-top: 5%;
+  padding-right: 12%;
+}
+
+.myCustomSidebar {
+  background-color: gray;
+  height: 100vh;
+  width: 7%;
+  position: absolute;
+}
+
+.linksContainer {
+  font-size: 20px;
+  padding-top: 20%;
+  margin-left: 25%;
+}
+
+a {
+  display: block;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.visible {
+  transform: translateX(-200%);
+  animation: mymove 2s;
+  animation-fill-mode: forwards;
+}
+
+.hidden {
+  animation: mymoveback 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes mymove {
+  from {
+    transform: translateX(-200%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes mymoveback {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-200%);
+  }
+}
+
+.sidebar img {
+  float: left;
+  padding-left: .5%;
+  padding-top: .5%;
+}
+
+.user-data {
+  padding-top: 60%;
+  padding-left: 20%;
+  font-size: 30px;
+}

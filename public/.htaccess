@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+
+# Determine the RewriteBase automatically and se it as environment variable.
+RewriteCond ${REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
+RewriteRule ^(.*) - [E=BASE:%1]
+
+# If the requestes filename exists, simply serve it.
+# We only want to let Apache server files and not directiories.
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule .? - [L]
+
+# Rewrite all other queries to the front controller.
+RewriteRule .? %{ENV:BASE}/index.php [L]
+
+</IfModule>

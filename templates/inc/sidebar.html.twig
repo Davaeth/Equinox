@@ -1,0 +1,67 @@
+{# <div class="sidebar">
+    <nav class="myCustomSidebar hidden">
+        <div class="hamburger">
+            <img src="{{ absolute_url(asset('img/menu.png')) }}" onclick="onHamburgerClick()"/>
+        </div>
+        <div class="linksContainer">
+            <a href="/">Home</a>
+            <a href="#">Create</a>
+            <a href="#">Show</a>
+            <a href="{{absolute_path('logout_page')}}">Logout</a>
+        </div>
+    </nav>
+    <img src="{{ absolute_url(asset('img/menu.png')) }}" onclick="onHamburgerClick()"/>
+</div> #}
+<div class="sidebar">
+    <nav class="myCustomSidebar hidden">
+        <div class="hamburger">
+            <img src="{{ absolute_url(asset('img/menu.png')) }}" onclick="onHamburgerClick()"/>
+        </div>
+        {% if app.session.get('user') %}
+            <div class="user-data">
+                <p>
+                    {{ app.session.get('user').nickname }}
+                </p>
+            </div>
+            <div class="linksContainer">
+                <ul class="list-unstyled components">
+                    <li class="active">
+                        <li>
+                            <a href="{{path('welcome_page')}}">Home</a>
+                        </li>
+                        <a aria-expanded="false" class="dropdown-toggle" data-toggle="collapse" href="#homeSubmenu">Create</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li>
+                                <a href="{{ path('spell_creator') }}">Spell</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('hero_creator') }}">Hero</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('element_creator') }}">Element</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a aria-expanded="false" class="dropdown-toggle" data-toggle="collapse" href="#pageSubmenu">Show</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li>
+                                <a href="{{ path('user_spells') }}">Spells</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('user_heroes') }}">Heroes</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('user_elements') }}">Elements</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{path('logout_page')}}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        {% endif %}
+    </nav>
+    <img src="{{ absolute_url(asset('img/menu.png')) }}" onclick="onHamburgerClick()"/>
+</div>

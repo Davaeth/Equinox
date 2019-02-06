@@ -1,0 +1,111 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    {{ spell.name }}{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/showAll.css')) }}">
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/sidebar.css')) }}">
+            <link rel="stylesheet" href="{{ absolute_url(asset('css/showDetailed.css')) }}">
+            {% endblock %}
+            {% block body %}
+                {% if app.session.get('user') %}
+                    <h1>
+                        {{ spell.name }}
+                    </h1>
+                    <span class="basicDecription">
+                        {{ spell.rarity }}</span>
+                    <span class="basicDecription">
+                        {{ spell.element }}</span>
+                    <span class="basicDecription">
+                        {{ spell.hitType }}</span>
+                    <hr>
+                        {% if spell.damage %}
+                            <table>
+                                <tr>
+                                    <th>Damage:</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ spell.damage }}
+                                    </td>
+                                </tr>
+                            </table>
+                        {% endif %}
+                        {% if spell.shield %}
+                            <table>
+                                <tr>
+                                    <th>Shield:</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ spell.shield }}
+                                    </td>
+                                </tr>
+                            </table>
+                        {% endif %}
+                        {% if spell.heal %}
+                            <table>
+                                <tr>
+                                    <th>Heal:</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ spell.heal }}
+                                    </td>
+                                </tr>
+                            </table>
+                        {% endif %}
+                        {% if spell.resistance %}
+                            <table>
+                                <tr>
+                                    <th>Resistance:</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ spell.resistance }}
+                                    </td>
+                                </tr>
+                            </table>
+                        {% endif %}
+                        {% if spell.count %}
+                            <table>
+                                <tr>
+                                    <th>Count:</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ spell.count }}
+                                    </td>
+                                </tr>
+                            </table>
+                        {% endif %}
+                        <table>
+                            <tr>
+                                <th>Speed:</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{ spell.speed }}
+                                </td>
+                            </tr>
+                        </table>
+                        <hr>
+                            <table>
+                                <tr>
+                                    <th>Spell is about:</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ spell.description }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button onclick="spells()" class="btn btn-primary mt-3">Return
+                                        </td>
+                                    </tr>
+                                </table>
+                                {% else %}
+                                {{ render("/login") }}
+                            {% endif %}
+                        {% endblock %}
+                    

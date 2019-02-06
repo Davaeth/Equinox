@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+{% block title %}Welcome
+    {{user.nickname}}!{% endblock %}
+{% block body %}
+    {% if app.session.get('user') %}
+        <h1>Hello,
+            {{ user.nickname }}!</h1>
+        <hr>
+            <div>
+                <table style="width:100%">
+                    <tr>
+                        <th>Brief</th>
+                        <th>Sviper</th>
+                        <th>SSH</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            Welcome to our site where you will be able to create your own spells, heroes and elements!
+                            <br/>
+                            Our site is about SSH (Super Spell Heroes) game.
+                            <br/>
+                            We are glad that we can finally announce you our hard work.
+                        </td>
+                        <td>
+                            Super Spell Heroes is a mobile game made by a Sviper.
+                            <br/>
+                            Sviper is a germany game-dev team which makes  games for all of us.
+                            <br/>
+                            They work so hard every day and bring us so many new features!
+                        </td>
+                        <td>
+                            In SSH game you are 1 of 9 mages that fights each other to be the best mage in a whole world.
+                            <br/>
+                            Once you reach Crystal Palace you are able to put your name in a ranking matches.
+                            <br/>
+                            The game is available on Android and IOS devices (or some pc emulators too).
+                        </td>
+                    </table>
+                </div>
+                <div>
+                    <table style="width:100%">
+                        <tr>
+                            <th>Elements</th>
+                            <th>Areas</th>
+                            <th>Spells</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                In game we have 5 separated elements and every element has it's own spells and rules.
+                                <br/>
+                                Elements existing in game are Water, Fire, Nature, Earth and Light.
+                                <br/>
+                                For now the best heroes are from the Earth (Asgard) and from Fire element (Jane).
+                            </td>
+                            <td>
+                                In game we chave 10 areas. Every area has it's own point to reach if you want go to the next one.
+                                <br/>
+                                In the end of the every area you have to fight a boss, Dark Demon who is pretty strong and it's so hard to bit him with a first strike.
+                                <br/>
+                                Each ara contains it's own pack of spells, heroe and the gold you can earn via buying it with (unfortunetely) real money.
+                            </td>
+                            <td>
+                                Each spell has it's own rarity level. In game we have 4 rarity levels, Basic, Advanced, Elite and Ultimate.
+                                <br/>
+                                Each spell has to be a type of one of the elements mentioned before.
+                                <br/>
+                                One spell could be a shield to protect yourself or the offensive one to deal damage to your opponent.
+                            </td>
+                        </table>
+                    </div>
+                    {% else %}
+                    <h1>Welcome newcomer!</h1>
+                    <br/>
+                    <h3>You are just about to make your own deck!</h3>
+                    <br/>
+                    <h3>But first, login to your account, ok?</h3>
+                    <hr>
+                        <h8>
+                            <a href="{{ path('login_page') }}">Login</a>
+                        </h8>
+                        <h8>
+                            <a href="{{ path('registration_page') }}">Register</a>
+                        </h8>
+                    {% endif %}
+                {% endblock %}
+            

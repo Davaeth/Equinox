@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    {{ element.name }}{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/showAll.css')) }}">
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/sidebar.css')) }}">
+            <link rel="stylesheet" href="{{ absolute_url(asset('css/showDetailed.css')) }}">
+            {% endblock %}
+            {% block body %}
+                {% if app.session.get('user') %}
+                    <h1>
+                        {{ element.name }}
+                    </h1>
+                    <hr>
+                        <table>
+                            <tr>
+                                <th>Mechanics:</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{ element.mechanics }}
+                                </td>
+                            </tr>
+                        </table>
+                        <hr>
+                            <table>
+                                <tr>
+                                    <th>Origin:</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ element.origin }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button onclick="elements()" class="btn btn-primary mt-3">Return
+                                        </td>
+                                    </tr>
+                                </table>
+                                {% else %}
+                                {{ render("/login") }}
+                            {% endif %}
+                        {% endblock %}
+                    

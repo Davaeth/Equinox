@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/showAll.css')) }}">
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/sidebar.css')) }}">
+        {% endblock %}
+        {% block title %}Member creatings{% endblock %}
+        {% block body %}
+            {% if app.session.get('user') %}
+                {% if heroesCount != 0 %}
+                    <h1 style="transform: translateY(-140%) translateX(-15%);">Your heroes:
+                    </h1>
+                    {% for hero in heroes %}
+                        <div>
+                            <table style="width:100%">
+                                <tr>
+                                    <th>
+                                        {{hero.name}}</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{hero.title}}
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('show_hero', { 'id': hero.id }) }}" class="btn btn-info">Show</a>
+                                        <a href="{{ path('edit_hero', { 'id': hero.id }) }}" class="btn btn-dark">Edit</a>
+                                        <a href="{{ path('delete_hero', { 'id': hero.id }) }}" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </table>
+                            </div>
+                        {% endfor %}
+                        {% else %}
+                        {% if user.gender == 'male' %}
+                            <p>
+                                You haven't created any hero right now, sir!</p>
+                            <p>Try to do it!
+                            </p>
+                            {% else %}
+                            You haven't created any hero right now, ma'am!
+                            <br/>
+                            Try to do it!
+                        {% endif %}
+                        <a href="{{path('hero_creator')}}" class="btn btn-dark">Create Hero</a>
+                    {% endif %}
+                    {% else %}
+                    {{ render("/login") }}
+                {% endif %}
+            {% endblock %}
+        

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ absolute_url(asset('css/showAll.css')) }}">
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/sidebar.css')) }}">
+        {% endblock %}
+        {% block title %}Member creatings{% endblock %}
+        {% block body %}
+            {% if app.session.get('user') %}
+                {% if spellsCount != 0 %}
+                    <h1 style="transform: translateY(-140%) translateX(-15%);">Your spells:
+                    </h1>
+                    {% for spell in spells %}
+                        <div>
+                            <table style="width:100%">
+                                <tr>
+                                    <th>
+                                        {{spell.name}}</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{spell.rarity}}
+                                    </td>
+                                    <td>
+                                        {{spell.element}}
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('show_spell', { 'id': spell.id }) }}" class="btn btn-info">Show</a>
+                                        <a href="{{ path('edit_spell', { 'id': spell.id }) }}" class="btn btn-dark">Edit</a>
+                                        <a href="{{ path('delete_spell', { 'id': spell.id }) }}" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </table>
+                            </div>
+                        {% endfor %}
+                        {% else %}
+                        {% if user.gender == 'male' %}
+                            <p>
+                                You haven't created any spell right now, sir!</p>
+                            <p>Try to do it!
+                            </p>
+                            {% else %}
+                            You haven't created any spell right now, ma'am!
+                            <br/>
+                            Try to do it!
+                        {% endif %}
+                        <a href="{{path('spell_creator')}}" class="btn btn-dark">Create Spell</a>
+                    {% endif %}
+                    {% else %}
+                    {{ render("/login") }}
+                {% endif %}
+            {% endblock %}
+        

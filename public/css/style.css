@@ -1,0 +1,26 @@
+.welcome {
+  margin-top: 0%;
+  padding-top: 1%;
+}
+
+h1 {
+    font-size: 60px;
+}
+
+th {
+  font-size: 30px;
+}
+
+td, tr {
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-bottom: 60px;
+    font-size: 20px;
+}
+
+body,
+html {
+  height: 100%;
+  display: grid;
+  width: 100%;
+}

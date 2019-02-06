@@ -1,0 +1,29 @@
+.welcome {
+    margin-top: 0%;
+    padding-top: 1%;
+}
+
+h1 {
+    font-size: 60px;
+}
+
+th {
+    font-size: 50px;
+}
+
+table {
+    margin-left: 15%;
+}
+
+td, tr {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+
+body, html {
+    height: 100%;
+    display: grid;
+    width: 100%;
+}
