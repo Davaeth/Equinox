@@ -1,0 +1,37 @@
+Projekt wykonany przez studenta Patryka Po³eæ.
+Projekt jest prac¹ zaliczeniow¹ do przedmiotu pt. Tworzenie aplikacji internetowych.
+
+Aplikacja wykorzystuje jêzyk PHP wraz z frameworkiem Symfony.
+Do pracy z aplikacj¹ i przetrzymywania danych wykorzystana zosta³a baza danych MySQL.
+
+Aplikacja tworzona jest w pe³ni fanowsko do gry Super Spell Heroes.
+U¿ytkownik ma do dyspozycji 3 formualrze (nie lciz¹c formularzy rejestracyjnych).
+Kazdy formularz odpowiada za inn¹ czêœæ gry, tj. postaæ, zaklêcie, element magii.
+Formularze dostosowane s¹ do standardów z gry.
+Dziêki tej aplikacji gracze mog¹ tworzyæ swoje w³asne elementy rozgrywki jako pomys³y do gry.
+Ochrona przed niezalogowanym u¿ytkownikiem wykonana jest przy pomocy sesji.
+
+Kroki niezbêdne do uruchomienia projektu:
+
+1. Wypakowaæ zawartoœæ spakowanego projektu do folderu htdocs w folderze XAMPP.
+
+2. Uruchomiæ XAMPPa.
+	2a. Uruchmoiæ Apache or MySQL.
+
+3. Przejœæ do panelu php my admin (mo¿na to zrobiæ za pomoc¹ przycisku "Admin" w XAMPPie przy panelu MySQL)
+
+4. Utworzyæ pust¹ bazê danych o nazwie 'equinox'.
+
+5. Przejœæ do pliku '.env' w folderze g³ównym projektu.
+	5a. Sprawdziæ czy w linijce 27 widnieje odpowiedni login oraz has³o do konta MySQL.
+	
+6. Po poprawnym wykonaniu punktu 5 (wtedy i tylko wtedy) przejœæ do folderu g³ównego z projektu w wierszu poleceñ systemu.
+	(W przypadku koniecznoœci zmiany partycji na systemu operacjnym windows wpisaæ np. 'F: <ENTER>'.)
+	6a. Wpisaæ polecenie 'php bin/console doctrine:migrations:diff' - polecenie to utworzy now¹ wersjê stanu bazy danych.
+	6b. Wpisac polecenie 'php bin/console doctrine:migrations:migrate' a nastêpnie wpisaæ 'y' przy pytaniu o potwierdzenie migracji.
+	6c. Uruchomiæ serwer lokalny poleceniem 'php bin/console server:run'.
+	6d. Wpisaæ w przegl¹darce adres 'localhost:8000'.
+	
+UWAGA! W przypadku b³êdów podczas próby migracji nale¿y upewniæ siê, i¿ baza na pewno posiada odpowiedni¹ nazwiê 'equinox'. Upewniæ siê równie¿
+i¿ jest ona pusta. W przypadku gdy nie jest pusta nale¿y usun¹æ ca³¹ jej zawartoœæ, b¹dŸ stworzyæ j¹ od nowa oraz usun¹æ zawartoœæ folderu 
+'Migrations' zanjduj¹cego w folderze 'src', który znajduje siê w folderze g³ównym projektu. Nastêpnie powtórzyæ krok 6.
